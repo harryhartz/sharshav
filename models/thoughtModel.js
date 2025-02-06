@@ -1,9 +1,12 @@
-import mongoose from "mongoose";
+// routes/thoughtsRoutes.js
+import express from "express";
+import { getThoughts, addThought, updateThought, deleteThought } from "../controllers/thoughtsController.js";
 
-const thoughtSchema = new mongoose.Schema({
-  title: String,
-  content: String,
-  date: { type: Date, default: Date.now },
-});
+const router = express.Router();
 
-export default mongoose.model("Thought", thoughtSchema);
+router.get("/", getThoughts);
+router.post("/", addThought);
+router.put("/:id", updateThought);
+router.delete("/:id", deleteThought);
+
+export default router;
