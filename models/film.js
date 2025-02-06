@@ -7,4 +7,4 @@ const filmSchema = new mongoose.Schema({
   description: String,
 });
 
-export default mongoose.model("Film", filmSchema);
+export default mongoose.model("Film", filmSchema, "movies");
