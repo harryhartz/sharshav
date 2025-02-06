@@ -28,9 +28,12 @@ app.use(cors());
 import mongoose from 'mongoose';
 
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.error('MongoDB Connection Error:', err));
+  .connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
+    socketTimeoutMS: 45000, // Increase socket timeout
+  })
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => console.error("❌ MongoDB Connection Error:", err));
   
 
 // Define a simple schema
