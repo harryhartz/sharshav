@@ -1,5 +1,5 @@
 // controllers/thoughtsController.js
-import Thought from "../models/Thought.js";
+import Thought from "../models/thoughtModel.js";
 
 export const getThoughts = async (req, res) => {
     try {

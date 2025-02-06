@@ -1,5 +1,5 @@
 // controllers/filmsController.js
-import Film from "../models/Film.js";
+import Film from "../models/filmModel.js";
 
 export const getFilms = async (req, res) => {
     try {
