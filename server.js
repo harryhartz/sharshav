@@ -28,32 +28,9 @@ app.use(cors());
 import mongoose from 'mongoose';
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.error(err));
-
-
-  app.get("/api/items/:id", async (req, res) => {
-    const { id } = req.params;
-  
-    // Check if the ID is a valid MongoDB ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid item ID" });
-    }
-  
-    try {
-      const item = await Item.findById(id);
-      if (!item) {
-        return res.status(404).json({ message: "Item not found" });
-      }
-      res.json(item);
-    } catch (error) {
-      res.status(500).json({ message: "Server error" });
-    }
-  });
+  .catch(err => console.error('MongoDB Connection Error:', err));
   
 
 // Define a simple schema
