@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
 const filmSchema = new mongoose.Schema({
-  title: String,
-  director: String,
-  year: Number,
-  description: String,
+  title: { type: String, required: true },
+  director: { type: String, required: true },
+  year: { type: Number, required: true },
 });
 
-export default mongoose.model("Film", filmSchema, "movies");
+const Film = mongoose.model("Film", filmSchema);
+
+export default Film;
