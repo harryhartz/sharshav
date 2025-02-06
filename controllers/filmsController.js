@@ -1,13 +1,12 @@
-import Film from "../models/film.js";
+import Film from "../models/filmModel.js";
 
 export const getFilms = async (req, res) => {
-  const films = await Film.find();
-  res.json(films);
-};
-
-export const addFilm = async (req, res) => {
-  const { title, director, year, description } = req.body;
-  const film = new Film({ title, director, year, description });
-  await film.save();
-  res.json(film);
+  try {
+    const films = await Film.find();
+    console.log("Fetched films:", films); // 🔹 Add this log to see what's being retrieved
+    res.json(films);
+  } catch (error) {
+    console.error("Error fetching films:", error);
+    res.status(500).json({ message: "Server Error" });
+  }
 };
